@@ -3,10 +3,12 @@ module View exposing (view)
 import Data.DarkSky exposing (DarkSkyData, DataPoint)
 import Data.LatLong exposing (LatLong)
 import Html exposing (..)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, value, type_, step)
+import Html.Events exposing (onSubmit, onInput, on)
+import Json.Decode
 import Maybe.Extra exposing (unwrap)
 import Model exposing (Model)
-import Msg exposing (Msg)
+import Msg exposing (Msg(..))
 import RemoteData exposing (RemoteData(..))
 
 view : Model -> Html Msg
@@ -17,7 +19,7 @@ view { location, conditions } =
       case conditions of
         Success v ->
           unwrap (Failure "DarkSky response does not contain current conditions") Success v.currently
-        Failure msg -> Failure msg
+        Failure err -> Failure err
         NotAsked -> NotAsked
         Loading -> Loading
 
@@ -54,22 +56,33 @@ view { location, conditions } =
       [ class <| "weather-app " ++ globalColorClass ]
       [ viewHeader location
       , viewBody asDataPoint
+      -- TODO: footer with "powered by" info
       ]
+
+onChange : (String -> msg) -> Attribute msg
+onChange handler =
+  on "change" <| Json.Decode.map handler <| Json.Decode.at ["target", "value"] Json.Decode.string
 
 viewHeader : LatLong -> Html Msg
 viewHeader { latitude, longitude } =
-  header
-    [ class "global-head" ]
-    [ div
-      [ class "fixed d-flex" ]
-      [ h1 [] [ text "Weather" ]
-      , form
-        [ class "ml-auto"]
-        [ input [] []
-        , input [] []
+  let
+    toFloatOr : Float -> String -> Float
+    toFloatOr =
+      flip <| (flip Result.withDefault) << String.toFloat
+  in
+    header
+      [ class "global-head" ]
+      [ div
+        [ class "fixed d-flex" ]
+        [ h1 [] [ text "Weather" ]
+        , form
+          [ class "ml-auto", onSubmit RefreshData ]
+          [ input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
+          , input [ type_ "number", step "0.001", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
+          , button [ type_ "submit" ] [ text "Go" ]
+          ]
         ]
       ]
-    ]
 
 viewBody : RemoteData String DataPoint -> Html a
 viewBody data =
@@ -83,7 +96,7 @@ viewBody data =
           div
             [ class "alert alert-danger" ]
             [ h2 [] [ text "Something went wrong" ]
-            , p [] [ text msg ]
+            , p [] [text msg]
             ]
         _ ->
           div [ class "loading-animation" ] []
@@ -94,4 +107,4 @@ viewBody data =
 
 viewWeather : DataPoint -> Html a
 viewWeather { temperature } =
-  div [] []
+  div [] [] -- TODO

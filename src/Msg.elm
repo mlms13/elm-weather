@@ -1,26 +1,26 @@
-module Msg exposing (Msg, update)
+module Msg exposing (Msg(..), update)
 
 import Data.DarkSky exposing (DarkSkyData)
 import Model exposing (Model)
 import RemoteData exposing (RemoteData)
+import Request.DarkSky as ReqDarkSky exposing (getData)
 
 type Msg
   = SetLat Float
   | SetLong Float
+  | RefreshData
   | ReceiveData (RemoteData String DarkSkyData)
 
 update : Msg -> Model -> (Model, Cmd Msg)
-update msg { location, conditions } =
+update msg ({ location, conditions, apiKey } as model) =
   case msg of
     SetLat v ->
-      { location = { location | latitude = v }
-      , conditions = conditions
-      } ! []
+      let loc = { location | latitude = v }
+      in { model | location = loc } ! []
     SetLong v ->
-      { location = { location | longitude = v }
-      , conditions = conditions
-      } ! []
+      let loc = { location | longitude = v }
+      in { model | location = loc } ! []
+    RefreshData ->
+      (model, Cmd.map ReceiveData <| getData apiKey location)
     ReceiveData v ->
-      { location = location
-      , conditions = v
-      } ! []
+      { model | conditions = v } ! []

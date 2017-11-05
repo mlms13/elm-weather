@@ -7,10 +7,12 @@ import RemoteData exposing (RemoteData(..))
 type alias Model =
   { location : LatLong
   , conditions : RemoteData String DarkSkyData
+  , apiKey : String
   }
 
 init : Model
 init =
-  { location = LatLong 40.0150 -105.2705
+  { location = LatLong 40.015 -105.27
   , conditions = NotAsked
+  , apiKey = "" -- TODO
   }
