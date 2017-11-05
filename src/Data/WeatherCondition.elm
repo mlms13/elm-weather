@@ -1,6 +1,6 @@
 module Data.WeatherCondition exposing (WeatherCondition, weatherConditionDecoder)
 
-import Json.Decode exposing (Decoder, andThen, string, succeed)
+import Json.Decode exposing (Decoder, map, string, succeed)
 
 -- used by DarkSky to indicate which icon should be used
 type WeatherCondition
@@ -23,10 +23,19 @@ type WeatherCondition
 weatherConditionDecoder : Decoder WeatherCondition
 weatherConditionDecoder =
   let
-    convert : String -> Decoder WeatherCondition
+    convert : String -> WeatherCondition
     convert raw =
       case raw of
-        -- TODO
-        unk -> succeed <| Unknown unk
+        "clear-day" -> ClearDay
+        "clear-night" -> ClearNight
+        "rain" -> Raining
+        "snow" -> Snowing
+        "sleet" -> Sleeting
+        "wind" -> Wind
+        "fog" -> Fog
+        "cloudy" -> Cloudy
+        "partly-cloudy-day" -> PartlyCloudyDay
+        "partly-cloudy-night" -> PartlyCloudyNight
+        unk -> Unknown unk
   in
-    string |> andThen convert
+    string |> map convert

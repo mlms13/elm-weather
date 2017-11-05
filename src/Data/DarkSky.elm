@@ -1,8 +1,8 @@
 module Data.DarkSky exposing (DarkSkyData, DataPoint, darkSkyDecoder)
 
 import Data.WeatherCondition exposing (WeatherCondition, weatherConditionDecoder)
-import Data.MoonPhase exposing (MoonPhase)
-import Data.Precipitation exposing (Precipitation)
+-- import Data.MoonPhase exposing (MoonPhase)
+-- import Data.Precipitation exposing (Precipitation)
 import Json.Decode exposing (string, float, nullable, Decoder)
 import Json.Decode.Pipeline exposing (decode, required, optional)
 import Time exposing (Time)
