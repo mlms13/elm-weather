@@ -78,28 +78,28 @@ dataPointDecoder =
     |> optional "humidity" (nullable float) Nothing
     |> optional "icon" (nullable weatherConditionDecoder) Nothing
     -- |> optional "moonPhase" (nullable moonPhaseDecoder) Nothing
-    |> required "nearestStormBearing" (nullable float)
-    |> required "nearestStormDistance" (nullable float)
-    |> required "ozone" (nullable float)
-    |> required "precipAccumulation" (nullable float)
-    |> required "precipIntensity" (nullable float)
-    |> required "precipIntensityMax" (nullable float)
+    |> optional "nearestStormBearing" (nullable float) Nothing
+    |> optional "nearestStormDistance" (nullable float) Nothing
+    |> optional "ozone" (nullable float) Nothing
+    |> optional "precipAccumulation" (nullable float) Nothing
+    |> optional "precipIntensity" (nullable float) Nothing
+    |> optional "precipIntensityMax" (nullable float) Nothing
     |> optional "precipIntensityMaxTime" (nullable float) Nothing
-    |> required "precipProbability" (nullable float)
+    |> optional "precipProbability" (nullable float) Nothing
     -- |> optional "precipType" (nullable precipitationDecoder) Nothing
-    |> required "pressure" (nullable float)
+    |> optional "pressure" (nullable float) Nothing
     |> optional "summary" (nullable string) Nothing
     |> optional "sunriseTime" (nullable float) Nothing
     |> optional "sunsetTime" (nullable float) Nothing
-    |> required "temperature" (nullable float)
-    |> required "temperatureHigh" (nullable float)
+    |> optional "temperature" (nullable float) Nothing
+    |> optional "temperatureHigh" (nullable float) Nothing
     |> optional "temperatureHighTime" (nullable float) Nothing
-    |> required "temperatureLow" (nullable float)
+    |> optional "temperatureLow" (nullable float) Nothing
     |> optional "temperatureLowTime" (nullable float) Nothing
     |> required "time" float
-    |> required "uvIndex" (nullable float)
+    |> optional "uvIndex" (nullable float) Nothing
     |> optional "uvIndexTime" (nullable float) Nothing
-    |> required "visibility" (nullable float)
-    |> required "windBearing" (nullable float)
-    |> required "windGust" (nullable float)
-    |> required "windSpeed" (nullable float)
+    |> optional "visibility" (nullable float) Nothing
+    |> optional "windBearing" (nullable float) Nothing
+    |> optional "windGust" (nullable float) Nothing
+    |> optional "windSpeed" (nullable float) Nothing

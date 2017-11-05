@@ -7,14 +7,14 @@ import Json.Decode exposing (decodeString)
 import RemoteData exposing (RemoteData(..), WebData, sendRequest, fromResult)
 
 baseUrl : String
-baseUrl = "https://api.darksky.net/forecast"
+baseUrl = "http://localhost:7777"
 
-getData : String -> LatLong -> Cmd (RemoteData String DarkSkyData)
-getData apiKey { latitude, longitude } =
+getData : LatLong -> Cmd (RemoteData String DarkSkyData)
+getData { latitude, longitude } =
   let
     url : String
     url =
-      baseUrl ++ "/" ++ apiKey ++ "/" ++ (toString latitude) ++ "," ++ (toString longitude)
+      baseUrl ++ "/weather/" ++ (toString latitude) ++ "/" ++ (toString longitude)
 
     parseResponse : WebData String -> RemoteData String DarkSkyData
     parseResponse data =

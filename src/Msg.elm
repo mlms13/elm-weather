@@ -12,7 +12,7 @@ type Msg
   | ReceiveData (RemoteData String DarkSkyData)
 
 update : Msg -> Model -> (Model, Cmd Msg)
-update msg ({ location, conditions, apiKey } as model) =
+update msg ({ location, conditions } as model) =
   case msg of
     SetLat v ->
       let loc = { location | latitude = v }
@@ -21,6 +21,6 @@ update msg ({ location, conditions, apiKey } as model) =
       let loc = { location | longitude = v }
       in { model | location = loc } ! []
     RefreshData ->
-      (model, Cmd.map ReceiveData <| getData apiKey location)
+      (model, Cmd.map ReceiveData <| getData location)
     ReceiveData v ->
       { model | conditions = v } ! []
