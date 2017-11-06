@@ -79,10 +79,9 @@ viewHeader { latitude, longitude } =
         [ h1 [] [ text "Weather" ]
         , form
           [ class "ml-auto", onSubmit RefreshData ]
-          [ input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
+          [ button [ onClick RequestGeolocation ] [ i [ class "fa fa-map-marker" ] [] ]
+          , input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
           , input [ type_ "number", step "0.001", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
-          , button [ onClick RequestGeolocation ] [ i [ class "fa fa-map-marker" ] [] ]
-          , button [ type_ "submit" ] [ i [ class "fa fa-refresh" ] [] ]
           ]
         ]
       ]

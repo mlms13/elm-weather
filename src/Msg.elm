@@ -25,11 +25,15 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg ({ location, conditions } as model) =
   case msg of
     SetLat v ->
-      let loc = { location | latitude = v }
-      in { model | location = loc } ! []
+      let
+        loc = { location | latitude = v }
+        updated = { model | location = loc }
+      in updated ! [ loadCurrentData updated ]
     SetLong v ->
-      let loc = { location | longitude = v }
-      in { model | location = loc } ! []
+      let
+        loc = { location | longitude = v }
+        updated = { model | location = loc }
+      in updated ! [ loadCurrentData updated ]
     SetLocation loc ->
       let updated = { model | location = loc }
       in (updated, loadCurrentData updated)
