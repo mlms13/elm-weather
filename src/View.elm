@@ -74,7 +74,7 @@ viewHeader { latitude, longitude } =
     header
       [ class "global-head" ]
       [ div
-        [ class "fixed d-flex" ]
+        [ class "fixed d-flex v-center" ]
         [ h1 [] [ text "Weather" ]
         , form
           [ class "ml-auto", onSubmit RefreshData ]
@@ -103,7 +103,7 @@ viewBody data =
           div [ class "loading-animation" ] []
   in
     div
-      [ class "fixed" ]
+      [ class "app-body fixed" ]
       [ content ]
 
 viewWeather : DataPoint -> Html a

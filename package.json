@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "",
+    "start": "npm run build && npm run style && npm run cpindex && npm run static",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "elm-make src/Main.elm --warn --output=static/index.html",
+    "build": "elm-make src/Main.elm --warn --output=static/main.js",
+    "style": "stylus ./styl/main.styl -o ./static/main.css",
     "static": "static ./static",
-    "proxy": "node ./proxy/server.js"
+    "proxy": "node ./proxy/server.js",
+    "cpindex": "cp ./index.html ./static/index.html"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
   },
   "devDependencies": {
     "elm": "^0.18.0",
-    "node-static": "^0.7.10"
+    "node-static": "^0.7.10",
+    "stylus": "^0.54.5"
   }
 }

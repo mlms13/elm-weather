@@ -1,0 +1,97 @@
+html, body
+  font-family: sans-serif
+  margin: 0
+  padding: 0
+
+a
+  text-decoration: none
+
+  &:hover,
+  &:focus
+    text-decoration: underline
+
+.fixed
+  margin-left: auto
+  margin-right: auto
+  max-width: 800px
+  width: 80%
+
+.d-flex
+  display: flex
+
+.v-center
+  align-items: center
+
+.ml-auto
+  margin-left: auto
+
+.items-center
+  justify-content: center
+
+.text-center
+  text-align: center
+
+// app-specific
+
+.global-head
+  transition: all 300ms
+  input
+    border: 0
+    border-radius: 2px
+    font-size: 0.9rem
+    margin-right: 10px
+    padding: 6px
+    transition: all 300ms
+    width: 80px
+
+footer
+  font-size: 0.8rem
+  transition: all 300ms
+
+// layout
+.weather-app
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  transition: all 300ms
+
+.app-body
+  flex: 1
+
+// colors
+tempcolor($name, $bg, $c, $a)
+  .temp-{$name}
+    background-color: $bg
+    color: $c
+    .global-head
+      background-color: darken($bg, 20%)
+
+      input
+        background-color $bg
+        color: $c
+
+        &:focus
+          box-shadow: 0 0 0 4px lighten($bg, 5%)
+          background-color: #fff
+          color: #444
+          outline: none
+
+    footer
+      color: blend(rgba($c, 0.6), $bg)
+    a
+      color: blend(rgba($a, 0.6), $bg)
+      &:hover
+        color: #fff
+
+tempcolor("unknown", #5a5a5f, #eef, #c0c0cd)
+tempcolor("extreme-hot", #610, #fee, #fcc)
+tempcolor("very-hot", #a32, #fee, #fcc)
+tempcolor("hot", #b42, #ffe, #fec)
+tempcolor("warm", #e73, #ffe, #fed)
+tempcolor("med", #ac4, #efe, #efd)
+tempcolor("cool", #8cd, #eff, #def)
+tempcolor("cold", #3af, #eef, #ddf)
+tempcolor("very-cold", #26b, #eef, #ddf)
+tempcolor("very-very-cold", #64c, #eef, #ddf)
+tempcolor("extreme-cold", #819, #fef, #fdf)
+
