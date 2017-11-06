@@ -43,7 +43,6 @@ input::-webkit-inner-spin-button
   input,
   button
     border: 0
-    border-radius: 2px
     font-size: 0.9rem
     line-height: 2rem
     padding: 0 10px
@@ -53,11 +52,16 @@ input::-webkit-inner-spin-button
       outline: none
 
   input
+    border-radius: 2px
     margin-right: 10px
     width: 70px
 
   button
+    border-radius: 2px 0 0 2px
     cursor: pointer
+
+    + button
+      border-radius: 0 2px 2px 0
 
 footer
   font-size: 0.8rem

@@ -1,5 +1,5 @@
 elm-stuff/
 node_modules/
 package-lock.json
-static/main.css
+static/css/main.css
 static/main.js
