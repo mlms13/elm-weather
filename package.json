@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run style && npm run static",
+    "start": "elm-package install && npm run build && npm run style && npm run static",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "elm-make src/Main.elm --warn --output=static/main.js",
     "style": "stylus ./styl/main.styl -o ./static/css/main.css",

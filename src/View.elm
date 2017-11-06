@@ -11,6 +11,7 @@ import Maybe.Extra exposing (unwrap)
 import Model exposing (Model)
 import Msg exposing (Msg(..))
 import RemoteData exposing (RemoteData(..))
+import Round exposing (round)
 
 view : Model -> Html Msg
 view { location, conditions } =
@@ -114,10 +115,15 @@ viewWeather { icon, summary, temperature } =
     content : Html a
     content =
       viewIcon <| Maybe.withDefault (Unknown "") icon
+
+    tempDisplay : String
+    tempDisplay =
+      unwrap "" (flip (++) "°" << Round.round 1) temperature
+
   in
     div
       [ class "fixed" ]
-      [ div [ class "d-flex items-center app-body-content" ] [ content, h3 [] [ text <| unwrap "" toString temperature ]]
+      [ div [ class "d-flex items-center app-body-content" ] [ content, h3 [] [ text tempDisplay ]]
       , p [ class "text-center" ] [ text <| "Current conditions: " ++ Maybe.withDefault "" summary ]
       ]
 
