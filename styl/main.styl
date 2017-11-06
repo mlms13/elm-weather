@@ -89,7 +89,7 @@ footer
     margin: 0
 
 // colors
-tempcolor($name, $bg, $c, $a)
+tempcolor($name, $bg, $c)
   .temp-{$name}
     background-color: $bg
     color: $c
@@ -112,21 +112,21 @@ tempcolor($name, $bg, $c, $a)
         background-color: lighten($bg, 20%)
 
     footer
-      color: blend(rgba($c, 0.6), $bg)
+      color: blend(rgba($c, 0.5), $bg)
     a
-      color: blend(rgba($a, 0.6), $bg)
+      color: blend(rgba($c, 0.8), $bg)
       &:hover
         color: #fff
 
-tempcolor("unknown", #5a5a5f, #eef, #c0c0cd)
-tempcolor("extreme-hot", #610, #fee, #fcc)
-tempcolor("very-hot", #a32, #fee, #fcc)
-tempcolor("hot", #b42, #ffe, #fec)
-tempcolor("warm", #e73, #ffe, #fed)
-tempcolor("med", #ac4, #efe, #efd)
-tempcolor("cool", #8cd, #eff, #def)
-tempcolor("cold", #3af, #eef, #ddf)
-tempcolor("very-cold", #26b, #eef, #ddf)
-tempcolor("very-very-cold", #64c, #eef, #ddf)
-tempcolor("extreme-cold", #819, #fef, #fdf)
+tempcolor("unknown", #5a5a5f, #eef)
+tempcolor("extreme-hot", #610, #fee)
+tempcolor("very-hot", #a32, #fee)
+tempcolor("hot", #b42, #ffe)
+tempcolor("warm", #e94, #ffe)
+tempcolor("med", #cc5, #ffd)
+tempcolor("cool", #9cb, #eff)
+tempcolor("cold", #8cd, #eff)
+tempcolor("very-cold", #3af, #eef)
+tempcolor("very-very-cold", #a9d, #fef)
+tempcolor("extreme-cold", #819, #fef)
 

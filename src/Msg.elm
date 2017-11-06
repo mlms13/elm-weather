@@ -14,7 +14,6 @@ type Msg
   | SetLong Float
   | SetLocation LatLong
   | RequestGeolocation
-  | RefreshData
   | ReceiveData (RemoteData String DarkSkyData)
 
 loadCurrentData : Model -> Cmd Msg
@@ -26,12 +25,12 @@ update msg ({ location, conditions } as model) =
   case msg of
     SetLat v ->
       let
-        loc = { location | latitude = v }
+        loc = { location | latitude = clamp -90 90 v }
         updated = { model | location = loc }
       in updated ! [ loadCurrentData updated ]
     SetLong v ->
       let
-        loc = { location | longitude = v }
+        loc = { location | longitude = clamp -180 180 v }
         updated = { model | location = loc }
       in updated ! [ loadCurrentData updated ]
     SetLocation loc ->
@@ -47,7 +46,5 @@ update msg ({ location, conditions } as model) =
             SetLocation location -- ignore error, no change in model
       in (model, Task.attempt recover Geolocation.now)
 
-    RefreshData ->
-      (model, loadCurrentData model)
     ReceiveData v ->
       { model | conditions = v } ! []

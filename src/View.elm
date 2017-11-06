@@ -4,7 +4,7 @@ import Data.DarkSky exposing (DarkSkyData, DataPoint)
 import Data.LatLong exposing (LatLong)
 import Data.WeatherCondition exposing (WeatherCondition(..), toIcon)
 import Html exposing (..)
-import Html.Attributes exposing (class, value, type_, step, href)
+import Html.Attributes exposing (class, value, type_, step, href, max, min)
 import Html.Events exposing (onSubmit, onInput, onClick, on)
 import Json.Decode
 import Maybe.Extra exposing (unwrap)
@@ -77,11 +77,11 @@ viewHeader { latitude, longitude } =
       [ div
         [ class "fixed d-flex v-center" ]
         [ h1 [] [ text "Weather" ]
-        , form
-          [ class "ml-auto", onSubmit RefreshData ]
+        , div
+          [ class "ml-auto" ]
           [ button [ onClick RequestGeolocation ] [ i [ class "fa fa-map-marker" ] [] ]
-          , input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
-          , input [ type_ "number", step "0.001", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
+          , input [ type_ "number", step "0.001", Html.Attributes.max "90", Html.Attributes.min "-90", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
+          , input [ type_ "number", step "0.001", Html.Attributes.max "180", Html.Attributes.min "-180", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
           ]
         ]
       ]
