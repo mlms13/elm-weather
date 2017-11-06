@@ -35,14 +35,24 @@ a
 
 .global-head
   transition: all 300ms
-  input
+  input,
+  button
     border: 0
     border-radius: 2px
     font-size: 0.9rem
-    margin-right: 10px
-    padding: 6px
+    line-height: 2rem
+    padding: 0 10px
     transition: all 300ms
-    width: 80px
+
+    &:focus
+      outline: none
+
+  input
+    margin-right: 10px
+    width: 70px
+
+  button
+    cursor: pointer
 
 footer
   font-size: 0.8rem
@@ -58,12 +68,16 @@ footer
 .app-body
   flex: 1
 
+  .fa
+    font-size: 4.5rem
+
 .app-body-content
   align-items: baseline
 
   .wi
     font-size: 4rem
     margin-right: 15px
+
 
   h3
     font-size: 2rem
@@ -77,15 +91,20 @@ tempcolor($name, $bg, $c, $a)
     .global-head
       background-color: darken($bg, 20%)
 
-      input
+      input,
+      button
         background-color $bg
         color: $c
 
         &:focus
           box-shadow: 0 0 0 4px lighten($bg, 5%)
-          background-color: #fff
-          color: #444
-          outline: none
+
+      input:focus
+        background-color: #fff
+        color: #444
+
+      button:hover
+        background-color: lighten($bg, 20%)
 
     footer
       color: blend(rgba($c, 0.6), $bg)

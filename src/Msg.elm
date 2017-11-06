@@ -1,4 +1,4 @@
-module Msg exposing (Msg(..), update)
+module Msg exposing (Msg(..), update, loadCurrentData)
 
 import Data.DarkSky exposing (DarkSkyData)
 import Model exposing (Model)
@@ -11,6 +11,10 @@ type Msg
   | RefreshData
   | ReceiveData (RemoteData String DarkSkyData)
 
+loadCurrentData : Model -> Cmd Msg
+loadCurrentData { location } =
+  Cmd.map ReceiveData <| getData location
+
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg ({ location, conditions } as model) =
   case msg of
@@ -21,6 +25,6 @@ update msg ({ location, conditions } as model) =
       let loc = { location | longitude = v }
       in { model | location = loc } ! []
     RefreshData ->
-      (model, Cmd.map ReceiveData <| getData location)
+      (model, loadCurrentData model)
     ReceiveData v ->
       { model | conditions = v } ! []

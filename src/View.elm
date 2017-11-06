@@ -80,7 +80,7 @@ viewHeader { latitude, longitude } =
           [ class "ml-auto", onSubmit RefreshData ]
           [ input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
           , input [ type_ "number", step "0.001", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
-          , button [ type_ "submit" ] [ text "Go" ]
+          , button [ type_ "submit" ] [ i [ class "fa fa-refresh" ] [] ]
           ]
         ]
       ]
@@ -100,7 +100,9 @@ viewBody data =
             , p [] [text msg]
             ]
         _ ->
-          div [ class "loading-animation" ] []
+          div
+            [ class "fixed text-center" ]
+            [ i [ class "fa fa-spinner fa-spin" ] []]
   in
     div
       [ class "app-body fixed d-flex v-center" ]

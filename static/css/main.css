@@ -35,14 +35,25 @@ a:focus {
 .global-head {
   transition: all 300ms;
 }
-.global-head input {
+.global-head input,
+.global-head button {
   border: 0;
   border-radius: 2px;
   font-size: 0.9rem;
-  margin-right: 10px;
-  padding: 6px;
+  line-height: 2rem;
+  padding: 0 10px;
   transition: all 300ms;
-  width: 80px;
+}
+.global-head input:focus,
+.global-head button:focus {
+  outline: none;
+}
+.global-head input {
+  margin-right: 10px;
+  width: 70px;
+}
+.global-head button {
+  cursor: pointer;
 }
 footer {
   font-size: 0.8rem;
@@ -57,11 +68,15 @@ footer {
 .app-body {
   flex: 1;
 }
+.app-body .fa {
+  font-size: 4.5rem;
+}
 .app-body-content {
   align-items: baseline;
 }
 .app-body-content .wi {
   font-size: 4rem;
+  margin-right: 15px;
 }
 .app-body-content h3 {
   font-size: 2rem;
@@ -74,15 +89,21 @@ footer {
 .temp-unknown .global-head {
   background-color: #48484c;
 }
-.temp-unknown .global-head input {
+.temp-unknown .global-head input,
+.temp-unknown .global-head button {
   background-color: #5a5a5f;
   color: #eef;
 }
-.temp-unknown .global-head input:focus {
+.temp-unknown .global-head input:focus,
+.temp-unknown .global-head button:focus {
   box-shadow: 0 0 0 4px #626267;
+}
+.temp-unknown .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-unknown .global-head button:hover {
+  background-color: #626267;
 }
 .temp-unknown footer {
   color: #b3b3bf;
@@ -100,15 +121,21 @@ footer {
 .temp-extreme-hot .global-head {
   background-color: #520e00;
 }
-.temp-extreme-hot .global-head input {
+.temp-extreme-hot .global-head input,
+.temp-extreme-hot .global-head button {
   background-color: #610;
   color: #fee;
 }
-.temp-extreme-hot .global-head input:focus {
+.temp-extreme-hot .global-head input:focus,
+.temp-extreme-hot .global-head button:focus {
   box-shadow: 0 0 0 4px #7a1400;
+}
+.temp-extreme-hot .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-extreme-hot .global-head button:hover {
+  background-color: #7a1400;
 }
 .temp-extreme-hot footer {
   color: #c2968f;
@@ -126,15 +153,21 @@ footer {
 .temp-very-hot .global-head {
   background-color: #88291b;
 }
-.temp-very-hot .global-head input {
+.temp-very-hot .global-head input,
+.temp-very-hot .global-head button {
   background-color: #a32;
   color: #fee;
 }
-.temp-very-hot .global-head input:focus {
+.temp-very-hot .global-head input:focus,
+.temp-very-hot .global-head button:focus {
   box-shadow: 0 0 0 4px #b73725;
+}
+.temp-very-hot .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-very-hot .global-head button:hover {
+  background-color: #b73725;
 }
 .temp-very-hot footer {
   color: #dda39c;
@@ -152,15 +185,21 @@ footer {
 .temp-hot .global-head {
   background-color: #96361b;
 }
-.temp-hot .global-head input {
+.temp-hot .global-head input,
+.temp-hot .global-head button {
   background-color: #b42;
   color: #ffe;
 }
-.temp-hot .global-head input:focus {
+.temp-hot .global-head input:focus,
+.temp-hot .global-head button:focus {
   box-shadow: 0 0 0 4px #c74824;
+}
+.temp-hot .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-hot .global-head button:hover {
+  background-color: #c74824;
 }
 .temp-hot footer {
   color: #e4b49c;
@@ -178,15 +217,21 @@ footer {
 .temp-warm .global-head {
   background-color: #d55912;
 }
-.temp-warm .global-head input {
+.temp-warm .global-head input,
+.temp-warm .global-head button {
   background-color: #e73;
   color: #ffe;
 }
-.temp-warm .global-head input:focus {
+.temp-warm .global-head input:focus,
+.temp-warm .global-head button:focus {
   box-shadow: 0 0 0 4px #ef7e3d;
+}
+.temp-warm .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-warm .global-head button:hover {
+  background-color: #ef7e3d;
 }
 .temp-warm footer {
   color: #f8c9a3;
@@ -204,15 +249,21 @@ footer {
 .temp-med .global-head {
   background-color: #8cab2f;
 }
-.temp-med .global-head input {
+.temp-med .global-head input,
+.temp-med .global-head button {
   background-color: #ac4;
   color: #efe;
 }
-.temp-med .global-head input:focus {
+.temp-med .global-head input:focus,
+.temp-med .global-head button:focus {
   box-shadow: 0 0 0 4px #aecf4d;
+}
+.temp-med .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-med .global-head button:hover {
+  background-color: #aecf4d;
 }
 .temp-med footer {
   color: #d3ebaa;
@@ -230,15 +281,21 @@ footer {
 .temp-cool .global-head {
   background-color: #50b4cd;
 }
-.temp-cool .global-head input {
+.temp-cool .global-head input,
+.temp-cool .global-head button {
   background-color: #8cd;
   color: #eff;
 }
-.temp-cool .global-head input:focus {
+.temp-cool .global-head input:focus,
+.temp-cool .global-head button:focus {
   box-shadow: 0 0 0 4px #8ecfdf;
+}
+.temp-cool .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-cool .global-head button:hover {
+  background-color: #8ecfdf;
 }
 .temp-cool footer {
   color: #c5ebf1;
@@ -256,15 +313,21 @@ footer {
 .temp-cold .global-head {
   background-color: #008ff5;
 }
-.temp-cold .global-head input {
+.temp-cold .global-head input,
+.temp-cold .global-head button {
   background-color: #3af;
   color: #eef;
 }
-.temp-cold .global-head input:focus {
+.temp-cold .global-head input:focus,
+.temp-cold .global-head button:focus {
   box-shadow: 0 0 0 4px #3daeff;
+}
+.temp-cold .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-cold .global-head button:hover {
+  background-color: #3daeff;
 }
 .temp-cold footer {
   color: #a3d3ff;
@@ -282,15 +345,21 @@ footer {
 .temp-very-cold .global-head {
   background-color: #1b5296;
 }
-.temp-very-cold .global-head input {
+.temp-very-cold .global-head input,
+.temp-very-cold .global-head button {
   background-color: #26b;
   color: #eef;
 }
-.temp-very-cold .global-head input:focus {
+.temp-very-cold .global-head input:focus,
+.temp-very-cold .global-head button:focus {
   box-shadow: 0 0 0 4px #246dc7;
+}
+.temp-very-cold .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-very-cold .global-head button:hover {
+  background-color: #246dc7;
 }
 .temp-very-cold footer {
   color: #9cb8e4;
@@ -308,15 +377,21 @@ footer {
 .temp-very-very-cold .global-head {
   background-color: #4e2fab;
 }
-.temp-very-very-cold .global-head input {
+.temp-very-very-cold .global-head input,
+.temp-very-very-cold .global-head button {
   background-color: #64c;
   color: #eef;
 }
-.temp-very-very-cold .global-head input:focus {
+.temp-very-very-cold .global-head input:focus,
+.temp-very-very-cold .global-head button:focus {
   box-shadow: 0 0 0 4px #6e4dcf;
+}
+.temp-very-very-cold .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-very-very-cold .global-head button:hover {
+  background-color: #6e4dcf;
 }
 .temp-very-very-cold footer {
   color: #b8aaeb;
@@ -334,15 +409,21 @@ footer {
 .temp-extreme-cold .global-head {
   background-color: #6d0e7a;
 }
-.temp-extreme-cold .global-head input {
+.temp-extreme-cold .global-head input,
+.temp-extreme-cold .global-head button {
   background-color: #819;
   color: #fef;
 }
-.temp-extreme-cold .global-head input:focus {
+.temp-extreme-cold .global-head input:focus,
+.temp-extreme-cold .global-head button:focus {
   box-shadow: 0 0 0 4px #9613a8;
+}
+.temp-extreme-cold .global-head input:focus {
   background-color: #fff;
   color: #444;
-  outline: none;
+}
+.temp-extreme-cold .global-head button:hover {
+  background-color: #9613a8;
 }
 .temp-extreme-cold footer {
   color: #cf96d6;
