@@ -6,6 +6,7 @@ import Geolocation exposing (Location)
 import Model exposing (Model)
 import RemoteData exposing (RemoteData)
 import Request.DarkSky as ReqDarkSky exposing (getData)
+import Round exposing (roundNum)
 import Task exposing (Task)
 
 type Msg
@@ -36,8 +37,10 @@ update msg ({ location, conditions } as model) =
     RequestGeolocation ->
       let recover result =
         case result of
-          Ok { latitude, longitude } -> SetLocation <| LatLong latitude longitude
-          Err _ -> SetLocation location
+          Ok { latitude, longitude } ->
+            SetLocation <| LatLong (roundNum 3 latitude) (roundNum 3 longitude)
+          Err _ ->
+            SetLocation location -- ignore error, no change in model
       in (model, Task.attempt recover Geolocation.now)
 
     RefreshData ->
