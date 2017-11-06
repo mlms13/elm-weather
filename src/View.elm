@@ -2,8 +2,9 @@ module View exposing (view)
 
 import Data.DarkSky exposing (DarkSkyData, DataPoint)
 import Data.LatLong exposing (LatLong)
+import Data.WeatherCondition exposing (WeatherCondition(..), toIcon)
 import Html exposing (..)
-import Html.Attributes exposing (class, value, type_, step)
+import Html.Attributes exposing (class, value, type_, step, href)
 import Html.Events exposing (onSubmit, onInput, on)
 import Json.Decode
 import Maybe.Extra exposing (unwrap)
@@ -56,7 +57,7 @@ view { location, conditions } =
       [ class <| "weather-app " ++ globalColorClass ]
       [ viewHeader location
       , viewBody asDataPoint
-      -- TODO: footer with "powered by" info
+      , viewFooter
       ]
 
 onChange : (String -> msg) -> Attribute msg
@@ -106,5 +107,29 @@ viewBody data =
       [ content ]
 
 viewWeather : DataPoint -> Html a
-viewWeather { temperature } =
-  div [] [] -- TODO
+viewWeather { icon, summary, temperature } =
+  let
+    content : Html a
+    content =
+      viewIcon <| Maybe.withDefault (Unknown "") icon
+  in
+    div
+      [ class "fixed" ]
+      [ div [ class "d-flex items-center" ] [ content, h3 [] [ text <| unwrap "" toString temperature ]]
+      , p [ class "text-center" ] [ text <| "Current conditions: " ++ Maybe.withDefault "" summary ]
+      ]
+
+viewIcon : WeatherCondition -> Html a
+viewIcon ico =
+  i [ class <| "wi " ++ toIcon ico] []
+
+viewFooter : Html a
+viewFooter =
+  footer
+    [ class "fixed d-flex" ]
+    [ p [ class "ml-auto"]
+      [ a [ href "https://darksky.net/poweredby/" ] [ text "Powered by DarkSky" ]
+      , span [] [ text ", Icons by " ]
+      , a [ href "http://erikflowers.github.io/weather-icons/" ] [ text "Erik Flowers" ]
+      ]
+    ]

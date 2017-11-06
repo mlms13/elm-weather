@@ -1,4 +1,4 @@
-module Data.WeatherCondition exposing (WeatherCondition, weatherConditionDecoder)
+module Data.WeatherCondition exposing (WeatherCondition(..), weatherConditionDecoder, toIcon)
 
 import Json.Decode exposing (Decoder, map, string, succeed)
 
@@ -19,6 +19,21 @@ type WeatherCondition
   -- | Hail
   -- | Thunderstorm
   -- | Tornado
+
+toIcon : WeatherCondition -> String
+toIcon x =
+  case x of
+    ClearDay -> "wi-day-sunny"
+    ClearNight -> "wi-night-clear"
+    Raining -> "wi-rain"
+    Snowing -> "wi-snow"
+    Sleeting -> "wi-rain-mix"
+    Wind -> "wi-strong-wind"
+    Fog -> "wi-fog"
+    Cloudy -> "wi-cloudy"
+    PartlyCloudyDay -> "wi-day-cloudy"
+    PartlyCloudyNight -> "wi-night-alt-partly-cloudy"
+    Unknown _ -> "wi-na"
 
 weatherConditionDecoder : Decoder WeatherCondition
 weatherConditionDecoder =
