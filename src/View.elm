@@ -103,7 +103,7 @@ viewBody data =
           div [ class "loading-animation" ] []
   in
     div
-      [ class "app-body fixed" ]
+      [ class "app-body fixed d-flex v-center" ]
       [ content ]
 
 viewWeather : DataPoint -> Html a
@@ -115,7 +115,7 @@ viewWeather { icon, summary, temperature } =
   in
     div
       [ class "fixed" ]
-      [ div [ class "d-flex items-center" ] [ content, h3 [] [ text <| unwrap "" toString temperature ]]
+      [ div [ class "d-flex items-center app-body-content" ] [ content, h3 [] [ text <| unwrap "" toString temperature ]]
       , p [ class "text-center" ] [ text <| "Current conditions: " ++ Maybe.withDefault "" summary ]
       ]
 

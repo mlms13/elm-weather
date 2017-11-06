@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run style && npm run cpindex && npm run static",
+    "start": "npm run build && npm run style && npm run static",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "elm-make src/Main.elm --warn --output=static/main.js",
-    "style": "stylus ./styl/main.styl -o ./static/main.css",
+    "style": "stylus ./styl/main.styl -o ./static/css/main.css",
     "static": "static ./static",
-    "proxy": "node ./proxy/server.js",
-    "cpindex": "cp ./index.html ./static/index.html"
+    "proxy": "node ./proxy/server.js"
   },
   "author": "",
   "license": "ISC",
