@@ -5,7 +5,7 @@ import Data.LatLong exposing (LatLong)
 import Data.WeatherCondition exposing (WeatherCondition(..), toIcon)
 import Html exposing (..)
 import Html.Attributes exposing (class, value, type_, step, href)
-import Html.Events exposing (onSubmit, onInput, on)
+import Html.Events exposing (onSubmit, onInput, onClick, on)
 import Json.Decode
 import Maybe.Extra exposing (unwrap)
 import Model exposing (Model)
@@ -81,6 +81,7 @@ viewHeader { latitude, longitude } =
           [ class "ml-auto", onSubmit RefreshData ]
           [ input [ type_ "number", step "0.001", value <| toString latitude, onChange <| SetLat << toFloatOr latitude] []
           , input [ type_ "number", step "0.001", value <| toString longitude, onChange <| SetLong << toFloatOr longitude ] []
+          , button [ onClick RequestGeolocation ] [ i [ class "fa fa-map-marker" ] [] ]
           , button [ type_ "submit" ] [ i [ class "fa fa-refresh" ] [] ]
           ]
         ]

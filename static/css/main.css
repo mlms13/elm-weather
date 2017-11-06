@@ -11,6 +11,11 @@ a:hover,
 a:focus {
   text-decoration: underline;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .fixed {
   margin-left: auto;
   margin-right: auto;
@@ -103,7 +108,7 @@ footer {
   color: #444;
 }
 .temp-unknown .global-head button:hover {
-  background-color: #626267;
+  background-color: #7a7a80;
 }
 .temp-unknown footer {
   color: #b3b3bf;
@@ -135,7 +140,7 @@ footer {
   color: #444;
 }
 .temp-extreme-hot .global-head button:hover {
-  background-color: #7a1400;
+  background-color: #b81f00;
 }
 .temp-extreme-hot footer {
   color: #c2968f;
@@ -167,7 +172,7 @@ footer {
   color: #444;
 }
 .temp-very-hot .global-head button:hover {
-  background-color: #b73725;
+  background-color: #d64733;
 }
 .temp-very-hot footer {
   color: #dda39c;
@@ -199,7 +204,7 @@ footer {
   color: #444;
 }
 .temp-hot .global-head button:hover {
-  background-color: #c74824;
+  background-color: #db5f3b;
 }
 .temp-hot footer {
   color: #e4b49c;
@@ -231,7 +236,7 @@ footer {
   color: #444;
 }
 .temp-warm .global-head button:hover {
-  background-color: #ef7e3d;
+  background-color: #f1925c;
 }
 .temp-warm footer {
   color: #f8c9a3;
@@ -263,7 +268,7 @@ footer {
   color: #444;
 }
 .temp-med .global-head button:hover {
-  background-color: #aecf4d;
+  background-color: #bbd669;
 }
 .temp-med footer {
   color: #d3ebaa;
@@ -295,7 +300,7 @@ footer {
   color: #444;
 }
 .temp-cool .global-head button:hover {
-  background-color: #8ecfdf;
+  background-color: #a0d6e4;
 }
 .temp-cool footer {
   color: #c5ebf1;
@@ -327,7 +332,7 @@ footer {
   color: #444;
 }
 .temp-cold .global-head button:hover {
-  background-color: #3daeff;
+  background-color: #5cbbff;
 }
 .temp-cold footer {
   color: #a3d3ff;
@@ -359,7 +364,7 @@ footer {
   color: #444;
 }
 .temp-very-cold .global-head button:hover {
-  background-color: #246dc7;
+  background-color: #3b83db;
 }
 .temp-very-cold footer {
   color: #9cb8e4;
@@ -391,7 +396,7 @@ footer {
   color: #444;
 }
 .temp-very-very-cold .global-head button:hover {
-  background-color: #6e4dcf;
+  background-color: #8569d6;
 }
 .temp-very-very-cold footer {
   color: #b8aaeb;
@@ -423,7 +428,7 @@ footer {
   color: #444;
 }
 .temp-extreme-cold .global-head button:hover {
-  background-color: #9613a8;
+  background-color: #be18d6;
 }
 .temp-extreme-cold footer {
   color: #cf96d6;
